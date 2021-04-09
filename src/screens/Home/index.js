@@ -56,7 +56,7 @@ const HomeScreen = () => {
       </div>
      
 
-      <div className="row d-flex justify-content-center">
+      <div className="row d-flex justify-content-center w-100">
         {renderList()}
       </div>
 
