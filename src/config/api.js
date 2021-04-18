@@ -8,7 +8,7 @@ api.interceptors.request.use(config => {
   const token = localStorage.getItem("@song-search");
 
   if(token) {
-    config.headers['Authorization'] = token;
+    config.headers['Authorization'] = `Bearer ${token}`;
   }
   return config;
 })

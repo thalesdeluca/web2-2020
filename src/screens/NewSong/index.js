@@ -16,6 +16,7 @@ const validationSchema = yup.object().shape({
 
 const NewSong = () => {
   const { song, saveSong }= useContext(SongContext);
+  const [sent, setSent] = useState(false)
   const history = useHistory();
 
   const { register, handleSubmit, formState:{ errors } } = useForm({ 
@@ -33,12 +34,16 @@ const NewSong = () => {
   
 
   useEffect(() => {
+    if(!sent) {
+      return;
+    }
+
     if(success) {
       setAlert({
         type: "success",
         open: true,
         message: "Song saved successfully"
-      })
+      }) 
 
       setTimeout(() => {
         history.push('/')
@@ -62,6 +67,7 @@ const NewSong = () => {
     formData.append('image', file);
 
     saveSong(formData)
+    setSent(true);
   }
 
 
